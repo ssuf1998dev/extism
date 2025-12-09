@@ -1,6 +1,7 @@
 use crate::*;
 
 /// WASI context
+#[derive(Clone)]
 pub struct Wasi {
     /// wasi
     pub ctx: wasi_common::WasiCtx,

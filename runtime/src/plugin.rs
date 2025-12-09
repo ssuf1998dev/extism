@@ -690,6 +690,10 @@ impl Plugin {
         self.current_plugin().wasi.is_some()
     }
 
+    pub fn wasi_ctx(&self) -> Option<wasi_common::WasiCtx> {
+        Some(self.current_plugin().wasi.clone()?.ctx)
+    }
+
     // Do a best-effort attempt to detect any guest runtime.
     fn detect_guest_runtime(
         &mut self,
