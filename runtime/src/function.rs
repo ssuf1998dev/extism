@@ -298,7 +298,7 @@ macro_rules! host_fn {
             outputs: &mut [$crate::Val],
             #[allow(unused)]
             mut $user_data: $crate::UserData<$dataty>,
-        ) -> Result<(), $crate::Error> {
+        ) -> std::result::Result<(), $crate::Error> {
             let output = {
                 let mut index = 0;
                 $(
@@ -308,7 +308,7 @@ macro_rules! host_fn {
                         index += 1;
                     }
                 )*
-                move || -> Result<_, $crate::Error> { $b }
+                move || -> std::result::Result<_, $crate::Error> { $b }
             };
             let output = output()?;
             let output: $crate::convert::MemoryHandle = plugin.memory_new(&output)?;
